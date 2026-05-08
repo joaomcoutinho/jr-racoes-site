@@ -1,0 +1,290 @@
+/* ═══════════════════════════════════════════════════════
+   SERVICES SECTION — Furro-style scroll-driven card stack
+   Left: static headline + CTA  |  Right: cards cycle on scroll
+   ═══════════════════════════════════════════════════════ */
+
+/* ─── OUTER WRAPPER ─────────────────────────────────────
+   Tall section = scroll "fuel" for the pinned animation.
+   NO overflow:hidden here — would break position:sticky.   */
+.section {
+  position: relative;
+  /* 5 cards × ~1.15 units + buffer ≈ 360vh of scroll room */
+  min-height: 360vh;
+  background-color: #F4F5F7;
+}
+
+/* ─── STICKY STAGE ──────────────────────────────────────
+   Stays pinned at the top of the viewport for the full
+   duration of the parent section's scroll.
+   z-index: 1 garante que fique acima das patinhas que
+   agora cobrem o section inteiro (360 vh).               */
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* ─── 2-COLUMN GRID ─────────────────────────────────── */
+.layout {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1160px;
+  padding: 0 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+/* ─── LEFT COLUMN (100% static) ─────────────────────── */
+.colLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
+.title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 900;
+  color: #1A2370;
+  line-height: 1.18;
+  margin: 0.75rem 0 1rem;
+}
+
+.subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.98rem;
+  color: #555F6E;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+/* ─── RIGHT COLUMN (scroll-driven card stack) ────────── */
+.colRight {
+  position: relative;
+  /* card height + 8px bottom/right room for shadow */
+  height: 492px;
+  overflow: hidden;
+}
+
+/* ─── CARD WRAPPER (stacked absolutely, all same slot) ─ */
+.cardWrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* 8px inset on right + bottom lets box-shadow render  */
+  right: 8px;
+  bottom: 8px;
+  will-change: transform;
+}
+
+/* ─── SERVICE CARD ──────────────────────────────────── */
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border: 3px solid #1A2370;
+  border-radius: 28px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 6px 6px 0 0 #1A2370;
+  transition: box-shadow 0.28s ease, transform 0.28s ease;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .card:hover {
+    box-shadow: 0 0 0 0 #1A2370;
+    transform: translate(6px, 6px);
+  }
+}
+
+.cardImg {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border-bottom: 2px solid #1A2370;
+}
+
+.cardBody {
+  padding: 1.5rem 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.cardTitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #1A2370;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 0.6rem;
+}
+
+.cardDesc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  color: #555F6E;
+  line-height: 1.7;
+  flex: 1;
+}
+
+.cardCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 1.1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #F5A623;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ─── MOBILE WRAPPER + GRID (hidden on desktop) ─────── */
+.mobileWrapper {
+  display: none;
+}
+
+.mobileGrid {
+  display: grid;
+}
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE — ≤ 900px: disable sticky, show mobile layout
+   ═══════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .section {
+    min-height: auto;
+  }
+
+  /* esconde o layout desktop paginado */
+  .sticky {
+    display: none;
+  }
+
+  /* wrapper mobile — visível */
+  .mobileWrapper {
+    display: block;
+    padding: 72px 20px 80px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  /* ── Header mobile ─────────────────────── */
+  .mobileHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .mobileTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(2rem, 7vw, 2.8rem);
+    font-weight: 900;
+    color: #1A2370;
+    line-height: 1.15;
+    margin: 0.5rem 0 0.75rem;
+  }
+
+  .mobileSubtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.98rem;
+    color: #555F6E;
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+  }
+
+  /* ── Cards: 2 colunas no tablet ────────── */
+  .mobileGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .mobileItem {
+    height: auto; /* altura natural */
+  }
+
+  /* cards menores no mobile: imagem mais baixa */
+  .mobileItem .cardImg {
+    height: 170px;
+  }
+
+  .mobileItem .cardBody {
+    padding: 1.1rem 1.25rem 1.3rem;
+  }
+
+  .mobileItem .cardTitle {
+    font-size: 0.95rem;
+  }
+
+  .mobileItem .cardDesc {
+    font-size: 0.82rem;
+  }
+
+  /* último card ímpar: ocupa as 2 colunas para fechar bonito */
+  .mobileItem:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+/* ── Celular pequeno: volta para 1 coluna ──────────── */
+@media (max-width: 520px) {
+  .mobileWrapper {
+    padding: 60px 16px 72px;
+  }
+
+  .mobileGrid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .mobileItem .cardImg {
+    height: 200px;
+  }
+
+  .mobileItem .cardBody {
+    padding: 1.25rem 1.5rem 1.5rem;
+  }
+
+  .mobileItem .cardTitle {
+    font-size: 1rem;
+  }
+
+  .mobileItem .cardDesc {
+    font-size: 0.85rem;
+  }
+
+  /* no celular, o último card ocupa a largura total */
+  .mobileItem:last-child:nth-child(odd) {
+    grid-column: auto;
+    max-width: 100%;
+  }
+}
+
+/* ── Garante sem scroll horizontal no mobile ── */
+@media (max-width: 900px) {
+  .section {
+    overflow-x: hidden;
+  }
+}

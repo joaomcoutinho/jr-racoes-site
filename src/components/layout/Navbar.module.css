@@ -1,0 +1,96 @@
+.navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: calc(100% - 40px);
+  max-width: 1200px;
+  background-color: #1A2370;
+  border: 2px solid rgba(255,255,255,0.15);
+  border-radius: 100px;
+  padding: 8px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 30px rgba(26,35,112,0.35);
+  transition: top 0.3s ease, padding 0.3s ease;
+}
+.logo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logonova{
+  width: 150px; /* Ajuste esse valor conforme necessário */
+  height: auto;  /* Garante que a proporção seja mantida */
+
+}
+.logoAccent { color: #F5A623; }
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+.navLink {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  transition: color 0.25s ease;
+  cursor: pointer;
+}
+.navLink:hover { color: #F5A623; }
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+.mobileMenu {
+  position: fixed;
+  inset: 0;
+  background: #1A2370;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.mobileLink {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: color 0.25s ease;
+  cursor: pointer;
+}
+.mobileLink:hover { color: #F5A623; }
+@media (max-width: 768px) {
+  .navLinks, .navCta { display: none !important; }
+  .hamburger { display: flex; }
+  .navbar { padding: 14px 20px; }
+}

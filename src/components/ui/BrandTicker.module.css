@@ -1,0 +1,78 @@
+.wrapper {
+  position: relative;
+  overflow: hidden;
+  padding: 20px 0;
+  max-width: 100%;
+  /* Garante que o wrapper seja um containing block para o GPU do ticker */
+  transform: translateZ(0);
+}
+.wrapper::before,
+.wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 100px;
+  z-index: 2;
+  pointer-events: none;
+}
+.wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, var(--ticker-fade, #ffffff), transparent);
+}
+.wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, var(--ticker-fade, #ffffff), transparent);
+}
+.track {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  width: max-content;
+  will-change: transform;
+  isolation: isolate;
+}
+.brand {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+  opacity: 1;
+  transition: opacity 0.3s ease, color 0.3s ease;
+  letter-spacing: 1px;
+}
+
+.logo {
+  height: 60px;
+  /*
+    brightness(0)  → colapsa todos os pixels para preto puro (elimina qualquer cor)
+    invert(1)      → inverte para branco puro
+    Resultado: todas as logos ficam exatamente na mesma cor, sem tonalidade.
+    opacity controla a intensidade final sobre o fundo azul.
+  */
+  filter: brightness(0) invert(1);
+  opacity: 0.45;
+  transition: all 0.3s ease;
+}
+
+/* ── MOBILE ── */
+@media (max-width: 640px) {
+  .wrapper {
+    padding: 14px 0;
+  }
+
+  /* Gradientes menores para não engolir logos num viewport pequeno */
+  .wrapper::before,
+  .wrapper::after {
+    width: 56px;
+  }
+
+  .track {
+    gap: 2rem;
+  }
+
+  .logo {
+    height: 40px;
+  }
+}
+

@@ -1,0 +1,245 @@
+.section {
+  background: #F4F5F7;
+  padding: 100px 24px;
+  overflow-x: hidden;
+}
+
+/* ── Header ───────────────────────────────────────────── */
+.header {
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+
+.title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: #1A2370;
+  margin: 0.5rem 0 1rem;
+  line-height: 1.15;
+}
+
+.subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #555F6E;
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ── Grid ─────────────────────────────────────────────── */
+.grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* ── Card ─────────────────────────────────────────────── */
+.card {
+  background: #ffffff;
+  border-radius: 28px;
+  border: 2px solid #1A2370;
+  box-shadow: 5px 5px 0 0 #1A2370;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cardPlaceholder {
+  border-color: rgba(26, 35, 112, 0.2);
+  box-shadow: 5px 5px 0 0 rgba(26, 35, 112, 0.15);
+  background: #fafafa;
+}
+
+@media (hover: hover) {
+  .card:not(.cardPlaceholder):hover {
+    transform: translateY(-6px);
+    box-shadow: 5px 11px 0 0 #1A2370;
+  }
+  .card.cardPlaceholder:hover {
+    transform: translateY(-3px);
+  }
+}
+
+/* ── Photo ────────────────────────────────────────────── */
+.photoWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #eef0f8;
+  flex-shrink: 0;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) {
+  .card:not(.cardPlaceholder):hover .photo {
+    transform: scale(1.04);
+  }
+}
+
+/* Logo badge — canto superior direito da foto */
+.photoBadge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 48px;
+  height: 48px;
+  background: #ffffff;
+  border-radius: 50%;
+  border: 2px solid rgba(26, 35, 112, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.18);
+  overflow: hidden;
+  padding: 5px;
+}
+
+.badgeLogo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Placeholder photo */
+.photoPlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: rgba(26, 35, 112, 0.25);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* ── Info ─────────────────────────────────────────────── */
+.info {
+  padding: 1.5rem 1.75rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.roleBadge {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #F5A623;
+  background: rgba(245, 166, 35, 0.1);
+  border: 1px solid rgba(245, 166, 35, 0.3);
+  border-radius: 100px;
+  padding: 4px 12px;
+  width: fit-content;
+}
+
+.cardPlaceholder .roleBadge {
+  color: rgba(26, 35, 112, 0.3);
+  background: rgba(26, 35, 112, 0.05);
+  border-color: rgba(26, 35, 112, 0.1);
+}
+
+.name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #1A2370;
+  margin: 0.15rem 0 0.4rem;
+  line-height: 1.2;
+}
+
+.cardPlaceholder .name {
+  color: rgba(26, 35, 112, 0.35);
+}
+
+/* ── Specialties ──────────────────────────────────────── */
+.specialties {
+  list-style: none;
+  padding: 0;
+  margin: 0.25rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.specialty {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #555F6E;
+  line-height: 1.5;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  min-width: 6px;
+  border-radius: 50%;
+  background: #F5A623;
+  margin-top: 5px;
+}
+
+.placeholderText {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: rgba(26, 35, 112, 0.25);
+  font-style: italic;
+  margin: 0.25rem 0 0;
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  /* 3º card ocupa linha inteira ou centralizado */
+  .card:last-child {
+    grid-column: 1 / -1;
+    max-width: 360px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 580px) {
+  .section { padding: 70px 16px; }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .card:last-child {
+    grid-column: auto;
+    max-width: 100%;
+    margin: 0;
+  }
+  .photoWrap {
+    aspect-ratio: 4 / 3;
+  }
+  .photo {
+    object-position: center 20%;
+  }
+}

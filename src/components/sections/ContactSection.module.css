@@ -1,0 +1,189 @@
+.section { background: #ffffff; padding: 100px 24px; overflow-x: hidden; }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: stretch; /* ambas colunas esticam para a mesma altura */
+}
+.ctaCard {
+  background: #1A2370;
+  border-radius: 30px;
+  padding: 50px 40px;
+  color: #fff;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ctaTitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+.ctaText {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+.ctaBtns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* ── Redes sociais ──────────────────────────────────── */
+.socialDivider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+  margin: 1.75rem 0 1.25rem;
+}
+.socialLabel {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 0.85rem;
+}
+.socialBtns {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.socialBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 20px;
+  border-radius: 50px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+  border: 1.5px solid transparent;
+}
+@media (hover: hover) {
+  .socialBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  }
+}
+.socialBtnInsta {
+  background: #F5A623;
+  color: #fff;
+  border-color: transparent;
+}
+.socialBtnFb {
+  background: #2E5BFF;
+  color: #fff;
+  border-color: transparent;
+}
+@media (hover: hover) {
+  .socialBtnInsta:hover { background: #E8951A; }
+  .socialBtnFb:hover    { background: #1A48F0; }
+  .unitLink:hover       { color: #1A2370; }
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 100%;
+}
+
+/* O mapWrapper cresce para preencher o espaço que sobra após o addressCard */
+.right .mapWrapper {
+  flex: 1;
+  min-height: 0;
+}
+
+/* O map dentro ocupa toda a altura do wrapper */
+.right .map {
+  height: 100%;
+  min-height: 200px;
+}
+.addressCard {
+  border: 2px solid #1A2370;
+  border-radius: 20px;
+  padding: 1.75rem;
+  box-shadow: 3px 3px 0 0 #1A2370;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+@media (hover: hover) {
+  .addressCard:hover {
+    box-shadow: 0 0 0 0 #1A2370;
+    transform: translateY(3px);
+  }
+}
+.unitName {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1A2370;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.unitDetail {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #555F6E;
+  line-height: 1.6;
+}
+.unitLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #2E5BFF;
+  transition: color 0.25s;
+}
+
+.mapWrapper {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid #1A2370;
+  box-shadow: 3px 3px 0 0 #1A2370;
+}
+.map { width: 100%; height: 100%; min-height: 220px; border: none; display: block; }
+
+@media (max-width: 900px) {
+  .container { grid-template-columns: 1fr; }
+  .ctaCard { padding: 36px 24px; }
+
+  /* Botões empilhados em coluna, mesma largura */
+  .ctaBtns {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .ctaBtns > * {
+    width: 100%;
+    justify-content: flex-start;
+    padding-left: 1.5rem;
+  }
+
+  .socialBtns {
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .socialBtn {
+    width: 100%;
+    justify-content: flex-start;
+    padding-left: 1.5rem;
+  }
+}

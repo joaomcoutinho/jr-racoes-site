@@ -1,0 +1,8 @@
+# Permite crawlers de redes sociais
+<IfModule mod_headers.c>
+  SetEnvIfNoCase User-Agent "facebookexternalhit" social_bot
+  SetEnvIfNoCase User-Agent "Facebot" social_bot
+  SetEnvIfNoCase User-Agent "Twitterbot" social_bot
+  SetEnvIfNoCase User-Agent "WhatsApp" social_bot
+  Header always set Access-Control-Allow-Origin "*" env=social_bot
+</IfModule>

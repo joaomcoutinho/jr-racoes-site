@@ -1,0 +1,23 @@
+.wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.paw {
+  position: absolute;
+  line-height: 0;
+}
+
+.inner {
+  display: block;
+  animation: pawFloat var(--dur, 6s) ease-in-out infinite var(--delay, 0s);
+}
+
+@keyframes pawFloat {
+  0%,  100% { transform: translateY(0px);   }
+  40%        { transform: translateY(-14px); }
+  60%        { transform: translateY(-12px); }
+}
