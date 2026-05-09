@@ -1,4 +1,4 @@
-import { HelmetProvider, Helmet } from 'react-helmet-async'
+import { Helmet } from 'react-helmet-async'
 import { Navbar } from './components/layout/Navbar'
 import { Footer } from './components/layout/Footer'
 import { WhatsAppFAB } from './components/layout/WhatsAppFAB'
@@ -13,7 +13,7 @@ import { ContactSection } from './components/sections/ContactSection'
 
 export default function App() {
   return (
-    <HelmetProvider>
+    <>
       <Helmet>
         <title>JR Rações — Petshop em Aldeia | Camaragibe, PE</title>
         <meta name="description" content="Petshop completo em Aldeia, Camaragibe/PE. Veterinário, rações, banho & tosa, farmácia pet e delivery. Há mais de 20 anos cuidando dos pets de quem mora na região." />
@@ -49,6 +49,6 @@ export default function App() {
       </main>
       <Footer />
       <WhatsAppFAB />
-    </HelmetProvider>
+    </>
   )
 }
